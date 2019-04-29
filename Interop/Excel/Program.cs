@@ -6,7 +6,15 @@ namespace Excel
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			DataStruct data = new DataStruct ();
+			IOWrite write = new IOWrite (data);
+
+			//Набиране на данни в основната таблица
+			data.addRow ("Фатме", "Черкез", "20");
+			data.addRow ("Ибрахим", "Грошар", "23");
+
+			//Проверка на таблица
+			data.prinTable ();
 		}
 	}
 }
