@@ -14,17 +14,27 @@ namespace Excel
 		{
 			try {
 				
-				//Междинни проверки
-				excel = InteropExcel.Application ();
-
+				//Подготовка
+				excel = new InteropExcel.ApplicationClass ();
 				if (excel == null) return false;
 
+				excel.Visible = false;
+
+				InteropExcel.Workbook workbook = excel.Workbooks.Add ();
+				if ( workbook == null ) return false;
+
+				InteropExcel.Worksheet sheet = (InteropExcel.Worksheet) workbook.Worksheets [1];
+				sheet.Name = "Таблица 1 ";
 
 
+				//Попълване на таблицата
 
 
+				//Запаметяване и затваряне
+				workbook.SaveCopyAs (getPath () );
 
-
+				excel.DisplayAlerts = false;
+				workbook.Close ();
 				excel.Quit ();
 				return true;
 
